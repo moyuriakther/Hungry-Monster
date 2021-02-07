@@ -1,0 +1,21 @@
+.search-button{
+    background-color: tomato;
+    color: white;
+}
+.monster-input{
+    width: 40%;
+}
+#meals{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 40px;
+}
+.meal{
+    border-radius: 20px;
+    background-color: #f5f7f8;
+    width: 350px;
+}
+.mealName{
+    text-align: center;
+    padding: 10px;
+}
