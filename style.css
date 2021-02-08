@@ -5,17 +5,23 @@
 .monster-input{
     width: 40%;
 }
-#meals{
+#meals-container{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 40px;
+    margin-top: 40px;
 }
 .meal{
     border-radius: 20px;
     background-color: #f5f7f8;
-    width: 350px;
+    width: 250px;
 }
 .mealName{
     text-align: center;
     padding: 10px;
+}
+.meal img{
+    width: 250px;
+    height: 200px;
+    margin: auto;
 }

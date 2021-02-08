@@ -19,16 +19,16 @@
         </div>
         <div class="d-flex justify-content-center search-area">
             <div class="input-group monster-input">
-                <input class="form-control" placeholder="Search for meal..."type="text">
+                <input id="search-input" class="form-control" placeholder="Search for meal..."type="text">
                 <div class="input-group-append">
-                    <button type="button" class="btn search-button">Primary</button>
+                    <button onclick="searchMeals()" type="button" class="btn search-button">Primary</button>
                 </div>
             </div>
         </div>
-        <!-- <div id="food"> -->
-            <div id="meals">
-            </div>
-        <!-- </div> -->
+        <div id="foodIngredients">
+        </div>
+        <div id="meals-container">
+        </div>
     </div>
    
     <script src="monster.js"></script>
