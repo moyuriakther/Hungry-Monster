@@ -11,73 +11,37 @@ const displayMeals = (meals) => {
   meals.forEach((meal) => {
     const mealDiv = document.createElement("div");
     mealDiv.className = "meal";
-    const mealInfo = `<img src = "${meal.strMealThumb}">
+    const mealInfo = `<img onclick="getIngredient('${meal.idMeal}')" src = "${meal.strMealThumb}">
             <h5 class = "mealName">${meal.strMeal}</h5>
-    
+            <button onclick="getIngredient('${meal.idMeal}')">details</button>
             `;
     mealDiv.innerHTML = mealInfo;
     mealsContainer.appendChild(mealDiv);
   });
 };
 
+const getIngredient = (strMeal) => {
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${strMeal}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayIngredient(data.meals[0]));
+};
 
-
-// const inputMealName = document.getElementById('input');
-// const inputMeal = inputMealName.value;
-// document.getElementById('button').addEventListener('click', function(){
-//     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s= ${inputMealName}')
-//     .then(res => res.json())
-//     .then(data => {
-//         // const inputMeal = meals.strCategory;
-//         // const name = meals.filter(meals =>meals.strCategory === inputMeal)
-//         // document.getElementById('meals').innerText = name;
-//         console.log(data);
-//     })
-// })
-
-// const inputMealName = document.getElementById('input').value;
-// document.getElementById('button').addEventListener('click', function(){
-//     fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=a' + inputMealName)
-//     // console.log('button clicked',fetch);
-//     .then(res =>res.json())
-//     // .then(data =>console.log(data))
-//     .then(data =>{
-//         const mealName = data;
-//         document.getElementById('meals').innerText =mealName;
-//     })
-// })
-
-// fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
-//   .then((res) => res.json())
-//   .then((data) => displayMeal(data.categories));
-
-// const displayMeal = (meals) => {
-//   const mealsDiv = document.getElementById("meals");
-//   meals.forEach((meal) => {
-//     const mealDiv = document.createElement("div");
-//     mealDiv.className = "meal";
-//     const mealInfo = `<img onclick="displayMealDetail('${meal.strCategory}')" src = "${meal.strCategoryThumb}">
-//         <h5 class = "mealName">${meal.strCategory}</h5>
-
-//         `;
-//     mealDiv.innerHTML = mealInfo;
-//     mealsDiv.appendChild(mealDiv);
-//   });
-// }
-
-// const displayMealDetail = meal =>{
-// const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${meal}`
-//     fetch(url)
-//     .then(res => res.json())
-//     .then(data =>console.log(data.meals));
-//     // console.log(url)
-
-// }
-
-// const renderMealInfo = meal =>{
-//     console.log(meal);
-//     const ingredients = document.getElementById('foodIngredients');
-//     ingredients.innerHTML =`
-
-//     `
-// }
+const displayIngredient = (strMeal) => {
+  const detailsContainer = document.getElementById("food-ingredients");
+  // strMeal.forEach((mealIngredient) => {
+    // const detailsDiv = document.createElement("div");
+    // detailsDiv.className = "mealDetails";
+    // const detailsInfo = `<ul>
+    //     <li>${mealIngredient.strIngredient1}</li>
+    //     <li>${mealIngredient.strIngredient2}</li>
+    //     <li>${mealIngredient.strIngredient3}</li>
+    //     <li>${mealIngredient.strIngredient4}</li>  
+    // </ul>
+    //         `;
+    // detailsDiv.innerHTML = detailsInfo;
+    // detailsContainer.appendChild(detailsDiv);
+  // });
+  detailsContainer.innerText = strMeal.strMeal;
+  console.log(detailsContainer);
+};
